@@ -1,3 +1,11 @@
+Ask your agent to set this up for you. It works with the PM290C printer.
+
+I made this so I could print stickers with my kid without having to use a janky
+app. I use ChatGPT: I ask it to set this up on my laptop, then whenever my kid
+wants a sticker, I ask ChatGPT to generate an image of whatever they have in
+mind and print it. This little printer is great at black-and-white pictures.
+ChatGPT goes and does the whole thing. It's pretty great.
+
 # Stickie
 
 A local command-line tool for printing text and images on a **PM290C thermal
@@ -121,9 +129,20 @@ for agents working in this checkout. It covers generic text and image jobs,
 printer selection, dimensions, previews, and the verified transport without
 imposing a particular language or sticker style.
 
-Read that file directly in an agent session, or install the `pm290c-printing`
-folder into your agent's skills directory. Point the agent at this checkout
-when using it; the skill does not bundle a printer driver or install itself.
+For the picture-sticker workflow above, use the
+[kids' sticker image skill](skills/kids-sticker-images/SKILL.md). It creates
+square cartoons with a rounded border, optional captions, and a checked
+384 × 384 print preview. For example:
+
+```text
+Use $kids-sticker-images to make a sticker of a friendly dinosaur.
+Use $kids-sticker-images to make and print one rocket sticker with "BLAST OFF" underneath.
+```
+
+Read a skill file directly in an agent session, or install its folder from
+`skills/` into your agent's skills directory. Point the agent at this checkout
+when using it. The skills do not install themselves or bundle a printer driver;
+the image skill also needs an available image-generation tool.
 
 For a transport regression, see [Android capture guidance](docs/android-capture.md).
 Keep raw device reports, app packages, generated output, credentials, and
