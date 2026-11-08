@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+STICKIE_ROOT=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+if [ ! -x "$STICKIE_ROOT/.venv/bin/python" ]; then
+  echo "Run ./setup.sh first." >&2
+  exit 1
+fi
+PYTHONPATH="$STICKIE_ROOT/src${PYTHONPATH:+:$PYTHONPATH}" exec "$STICKIE_ROOT/.venv/bin/python" -m stickie "$@"

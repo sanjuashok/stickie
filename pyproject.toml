@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stickie-pm290c"
+version = "0.1.0"
+description = "Print text and images to a PM290C from macOS over Bluetooth"
+readme = "README.md"
+requires-python = ">=3.11"
+keywords = ["pm290c", "thermal-printer", "bluetooth", "cli", "macos"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Console",
+    "Operating System :: MacOS :: MacOS X",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+]
+dependencies = ["bleak>=1.0,<4", "Pillow>=10,<13", "pyserial>=3.5,<4"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[project.scripts]
+stickie = "stickie.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+stickie = ["native/*.swift"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
